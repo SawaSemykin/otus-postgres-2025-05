@@ -1,0 +1,15 @@
+#cloud-config
+users:
+  - name: yc-user
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrh7N/LEcbtzmzf8u8lMWRY4MZHvh7A4hJIjU5BlEuJi+/o/dzoRM4FJtjcM2V5f0b1faRCEvUgFKpauOf2Z6OOB75QG/5tzEzsSK3RCWv2FoAyPrLH6P3xn/zp8b5e0BSjczI7hq/qnYzrOay5BwIKjzSJSf3oSblduI7kX/cNGQzPjofgbHJeg/odF6x1R/+hYaEco9qlSodTuMJBkBTSmE8tF4O1T+YLg5YCl2lviZY6ex+BlELjySY4ZEY+Hy57GhCJSE9Zvr9UHvgIdPKIdDE1rUXqoIyojV4tGT0Tle6cRErxE0ILpJXwgQ0CEUWTahcNWgVYtxrdLaYcoOdSC5kUoFwNGGfqOZV6UffKKxpLofSkDzRk5kjh/lxGtOcLNdBXXOzWM3bbaccxt9jvY51B7WoN7wRSmmK3i7hjfZtFRkwTOWQGYiBE+P14gLsg8vyi4x9dU844/Oy51VlwSouANAPPwEwCY0uy/pS5AwQPxZ9N/vI2KYhSfi+ZgU= u_m1jvr@MacBook-Pro-Aleksandr.local
+packages:
+  - postgresql
+  - postgresql-contrib
+runcmd:
+  - apt update
+  - apt upgrade -y
+  - systemctl enable postgresql
+  - systemctl start postgresql
